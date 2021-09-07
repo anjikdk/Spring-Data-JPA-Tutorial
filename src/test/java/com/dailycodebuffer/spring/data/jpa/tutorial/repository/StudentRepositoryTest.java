@@ -45,7 +45,6 @@ class StudentRepositoryTest {
                 .build();
 
         studentRepository.save(student);
-
     }
     
     @Test
