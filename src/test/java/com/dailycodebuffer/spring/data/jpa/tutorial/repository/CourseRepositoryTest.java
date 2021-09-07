@@ -42,6 +42,32 @@ class CourseRepositoryTest {
 
         courseRepository.save(course);
     }
+    
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+
+        Teacher teacher = Teacher.builder()
+                .firstName("Lizze")
+                .lastName("Morgan")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Abhishek")
+                .lastName("Singh")
+                .emailId("abhishek@gmail.com")
+                .build();
+
+        Course course = Course
+                .builder()
+                .title("AI")
+                .credit(12)
+                .teacher(teacher)
+                .build();
+
+        course.addStudents(student);
+
+        courseRepository.save(course);
+    }
 
     @Test
     public void findAllPagination(){
@@ -110,31 +136,5 @@ class CourseRepositoryTest {
                         firstPageTenRecords).getContent();
 
         System.out.println("courses = " + courses);
-    }
-
-    @Test
-    public void saveCourseWithStudentAndTeacher() {
-
-        Teacher teacher = Teacher.builder()
-                .firstName("Lizze")
-                .lastName("Morgan")
-                .build();
-
-        Student student = Student.builder()
-                .firstName("Abhishek")
-                .lastName("Singh")
-                .emailId("abhishek@gmail.com")
-                .build();
-
-        Course course = Course
-                .builder()
-                .title("AI")
-                .credit(12)
-                .teacher(teacher)
-                .build();
-
-        course.addStudents(student);
-
-        courseRepository.save(course);
     }
 }

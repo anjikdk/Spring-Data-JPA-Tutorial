@@ -36,7 +36,8 @@ public class Course {
     private CourseMaterial courseMaterial;
 
     @ManyToOne(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
     @JoinColumn(
             name = "teacher_id",
@@ -45,7 +46,8 @@ public class Course {
     private Teacher teacher;
 
     @ManyToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
     @JoinTable(
             name = "studen_course_map",
